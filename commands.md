@@ -13,7 +13,7 @@ Note: minikube is generally used to create or delete the cluster, kubectl is use
 Commmands for kubectl
 1. Kubectl get nodes
 2. kubectl get pods
-3. kubectl get services
+3. kubectl get service
 
 Lets create an nigix image
 1. kubectl create deployment nginx-depl —image=nginx (basic command for creating pods)
@@ -32,10 +32,15 @@ To edit deployment
 
 Debugging pods
 1. kubectl logs <pod name>
-2. kubectl exec -it <pod name> — /bin/bash
+2. kubectl exec -it <pod name> — bin/bash
+3. kubectl describe pod <pod name>
 
 Deleting deployment
 1. kubectl delete deployment <deployment name>
 
 Using YAML file:
 1. kubectl apply -f <filename>
+
+BASE64 encode for secrets
+1. echo -n '<secret>' | base64
+2. echo QWxhZGRpbjpvcGVuIHNlc2FtZQ== | base64 --decode
