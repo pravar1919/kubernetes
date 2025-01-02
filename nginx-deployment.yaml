@@ -30,7 +30,11 @@ spec:
     app: nginx
   ports:
   - protocol: TCP
-    port: 8000
-    targetPort: 8000
-  type: LoadBalancer
+    port: 8000       # Port exposed by the service
+    targetPort: 8000 # Port in the container
+    nodePort: 30080  # Fixed NodePort
+  type: NodePort
+  externalIPs:
+  - 65.1.85.175 # External IP to bind the service
+
 
