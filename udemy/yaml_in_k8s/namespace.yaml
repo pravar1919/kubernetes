@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+
+
+
+
+# kubectl create -f namespace.yaml
+# kubectl create namespace dev
+# kubectl config set-context $(kubectl config current-context) --namespace=dev # this is to set a particular namespace aprat from default
