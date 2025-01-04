@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata: # this is a dictionary
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end # this is to make them in groups
+spec:
+  containers: # this is a list
+    - name: nginx-container # '-' specify the first item
+      image: nginx
+
+    # - name: backend-container
+    #   image: redis
+
+
+# run command --> kubectl create -f pod-definaltion.yaml
