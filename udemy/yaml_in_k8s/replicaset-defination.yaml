@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+      spec:
+        containers:
+          - name: nginx-container
+            image: nginx
+  replicas: 3
+  selector: 
+    # this is specify to so that it can be responsible to certain pods, as replicaset is responsible for other pods as well.
+    # this is achieved by providing labels as below,
+    # so now this Replicaset is only responsible to the pods having label as 'front-end'.
+    matchLabels:
+      type: front-end
+
+
+# Notes:
+# Replicaset is a process to monitor Pods, If ay of the pods is terminated, its job it to make sure each pod is live and healthy.
+
+# kubectl create -f replicaset-defination.yaml
+# kubectl get replicaset
+# kubectl get pods
+# kubectl delete replicaset myapp-replicaset # to detelet 
+# kubectl replace -f replicaset-defination.yaml
+# kubctl scale -replicas=6 -f replicaset-defination.yaml # to updated replicas without from command line.
