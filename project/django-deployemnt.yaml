@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-backend
+  labels:
+    tags: backend
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      tags: backend-pod
+  template:
+    metadata:
+      labels:
+        tags: backend-pod
+
+    spec:
+      containers:
+        - name: django
+          image: pravar18/django-test-new
+          ports:
+            - containerPort: 8000
